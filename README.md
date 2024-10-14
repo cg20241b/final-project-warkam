@@ -104,10 +104,6 @@ One of the key aspects for character animation is rigging. Rigging is the proces
 
 ## User Interface (UI) Interaction
 
-### Interactive UI Elements
-
-Interactive UI elements are components in a user interface that allow players to engage with the game or application directly. In the context of video games, especially endless runners, these elements are essential for providing feedback, facilitating user interactions, and enhancing the overall player experience.
-
 ### Heads-Up Display
 
 A HUD (Heads-Up Display) is an interface element used in video games, applications, and various digital environments that presents crucial information to the player or user without obstructing their view of the main content. The term originally comes from aviation, where it refers to a transparent display that presents data directly in the pilot's line of sight, allowing them to maintain situational awareness.
