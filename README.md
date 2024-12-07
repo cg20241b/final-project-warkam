@@ -6,7 +6,7 @@ Rock-Paper-Scissors is a simple yet engaging game often used to teach decision-m
 
 ![image](https://github.com/user-attachments/assets/42269dd3-6d56-4cc1-a359-1ca7ce8007a6)
 
-Endless runner games are an engaging and accessible genre that has captivated players around the world. With their simple mechanics, dynamic gameplay, and rewarding progression systems, they provide endless entertainment. By combining fun graphics, sound design, and intuitive controls, developers can create compelling endless runner experiences.
+The proposed project will leverage hand-rigging techniques to simulate lifelike hand movements and combine them with gesture detection algorithms to ensure accurate recognition of the three core gestures: rock (fist), paper (open palm), and scissors (V-shape). This interactive system will provide users with a seamless and engaging gameplay experience.
 
 ## Shaders
 
