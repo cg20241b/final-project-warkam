@@ -2,7 +2,7 @@
 
 # Rock Paper Scissors using Hand Rigging Technology
 
-Endless runner games are a popular genre in mobile and casual gaming characterized by continuous gameplay where the player controls a character running through a never-ending environment. These games often involve avoiding obstacles, collecting items, and achieving high scores.
+Rock-Paper-Scissors is a simple yet engaging game often used to teach decision-making, probability, and strategy. This project aims to develop an interactive version of the game by integrating hand-rigging technology for real-time gesture recognition. Using 3D hand models and animation rigs, users will interact with the game through natural hand gestures, which will be recognized and interpreted by the system.
 
 ![image](https://github.com/user-attachments/assets/42269dd3-6d56-4cc1-a359-1ca7ce8007a6)
 
