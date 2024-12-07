@@ -4,36 +4,51 @@ using UnityEngine;
 
 public class HandTracking : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public UDPReceive udpReceive;
-    public GameObject[] handPoints;
+    public UDPReceive udpReceive;       // Reference to the UDPReceive script
+    public GameObject[] handPoints;     // Array of GameObjects that represent hand points
+    public UnityEngine.UI.Text gestureText;  // Reference to a UI Text component for gesture display
+
     void Start()
     {
-        
+        // Initialize if needed
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Access the received data (the string from UDPReceive)
         string data = udpReceive.data;
 
-        data = data.Remove(0, 1);
-        data = data.Remove(data.Length - 1, 1);
-        print(data);
+        if (string.IsNullOrEmpty(data))
+            return;
+
+        // Clean up the data (remove the first and last characters, which are '[' and ']')
+        data = data.Trim('[', ']');
+
+        // Split the data into an array by commas
         string[] points = data.Split(',');
-        print(points[0]);
 
-        //0        1*3      2*3
-        //x1,y1,z1,x2,y2,z2,x3,y3,z3
+        // Check if we have the right amount of data
+        if (points.Length < 63) return;  // Ensure we have at least 63 landmarks (21 points with 3 coordinates)
 
-        for (int i = 0; i < 21; i++)
+        // Update hand points' positions based on the data (assuming data consists of x, y, z coordinates for each landmark)
+        for (int i = 0; i < 21; i++) // 21 landmarks in total
         {
+            // Parse the x, y, z coordinates for each landmark
+            float x = 7 - float.Parse(points[i * 3]) / 100f;   // X position (adjust scaling as needed)
+            float y = float.Parse(points[i * 3 + 1]) / 100f;   // Y position
+            float z = float.Parse(points[i * 3 + 2]) / 100f;   // Z position
 
-            float x = 7 - float.Parse(points[i * 3]) / 100;
-            float y = float.Parse(points[i * 3 + 1]) / 100;
-            float z = float.Parse(points[i * 3 + 2]) / 100;
-
+            // Update the position of each hand point
             handPoints[i].transform.localPosition = new Vector3(x, y, z);
+        }
+
+        // The last element in the array is the gesture
+        string gesture = points[63];
+
+        // Display the gesture in the UI Text component
+        if (gestureText != null)
+        {
+            gestureText.text = $"Current Gesture: {gesture}";
         }
     }
 }
