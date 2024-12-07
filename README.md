@@ -1,6 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ZUtYscbQ)
 
-# Endless Runner Games
+# Rock Paper Scissors using Hand Rigging Technology
 
 Endless runner games are a popular genre in mobile and casual gaming characterized by continuous gameplay where the player controls a character running through a never-ending environment. These games often involve avoiding obstacles, collecting items, and achieving high scores.
 
