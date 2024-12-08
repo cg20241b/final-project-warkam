@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro; // Add this namespace
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private HandAnimationController aiHandAnimation;
 
     void Start()
-    {
+    {   
         //UpdateScore();
         StartCoroutine(GameRound());
     }
@@ -170,8 +171,17 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        resultText.text = playerLives > aiLives ? "You Win the Game!" : "AI Wins the Game!";
+
+        //resultText.text = playerLives > aiLives ? "You Win the Game!" : "AI Wins the Game!";
+        string finalResult = playerLives > aiLives ? "You Win!" : "You Lost!";
+        resultText.text = finalResult;
+
+        PlayerPrefs.SetString("GameResult", finalResult);
+        PlayerPrefs.Save();
+
+
         IsRoundActive = false;
+        SceneManager.LoadScene("EndMenu");
     }
 
     private void UpdateHealthUI()
