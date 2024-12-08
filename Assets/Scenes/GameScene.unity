@@ -241,7 +241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29353759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f3c6db2ab544f047958c67a7007e388, type: 3}
   m_Name: 
@@ -1311,6 +1311,7 @@ GameObject:
   - component: {fileID: 355287994}
   - component: {fileID: 355287993}
   - component: {fileID: 355287995}
+  - component: {fileID: 355287996}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1332,7 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   port: 5052
   startRecieving: 1
-  printToConsole: 1
+  printToConsole: 0
   data: 
   currentGesture: 
 --- !u!4 &355287994
@@ -1387,6 +1388,38 @@ MonoBehaviour:
   - {fileID: 428143357}
   gestureText: {fileID: 0}
   riggedHandModel: {fileID: 919132149155446097, guid: 6e0fcb7f69541f64a81d9a1ed55e5e95, type: 3}
+--- !u!114 &355287996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355287992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4390f5f33a6e347a9fda2277fb73e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLives: 3
+  aiLives: 3
+  playerMove: 
+  aiMove: 
+  result: 
+  currentCountdown: 5
+  countdownText: {fileID: 0}
+  resultText: {fileID: 0}
+  scoreText: {fileID: 0}
+  currentGestureText: {fileID: 0}
+  livesCountdownText: {fileID: 0}
+  playerGestureText: {fileID: 1840789173}
+  playerHealth1: {fileID: 0}
+  playerHealth2: {fileID: 0}
+  playerHealth3: {fileID: 0}
+  enemyHealth1: {fileID: 0}
+  enemyHealth2: {fileID: 0}
+  enemyHealth3: {fileID: 0}
+  currentGesture: 
+  udpReceive: {fileID: 355287993}
 --- !u!1 &370529729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c7500573c01e89042b8acfc8fd9d1221, type: 3}
