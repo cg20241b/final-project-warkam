@@ -115,7 +115,9 @@ Afrer the model were finished, we continue into the rigging process. By using mu
 
 Then on the pose mode, we add constraint to the fingers so it copy the movement of the parent "bone" so it moves the child "bone" by copying the parent rotation.
 
+### Hand Animation
 
+To create a moving hand movement changing from paper to scissor to rock to paper again, we used keyframe to mark what pose every "bone" should make.
 
 ## User Interface (UI) Interaction
 
