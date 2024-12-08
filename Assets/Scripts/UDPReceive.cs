@@ -19,11 +19,35 @@ public class UDPReceive : MonoBehaviour
 
     public void Start()
     {
-        // Start the receiving thread
+        StartUDP();
+    }
+
+    public void StartUDP()
+    {
+        // Close existing connection if any
+        CloseUDP();
+
+        // Start new connection
         receiveThread = new Thread(new ThreadStart(ReceiveData));
         receiveThread.IsBackground = true;
         receiveThread.Start();
     }
+
+    public void CloseUDP()
+    {
+        if (receiveThread != null)
+        {
+            receiveThread.Abort();
+            receiveThread = null;
+        }
+
+        if (client != null)
+        {
+            client.Close();
+            client = null;
+        }
+    }
+
 
     // Receive thread method to handle incoming data
     private void ReceiveData()
@@ -60,5 +84,10 @@ public class UDPReceive : MonoBehaviour
                 print(err.ToString());  // Handle any exceptions
             }
         }
+    }
+
+    void OnDestroy()
+    {
+        CloseUDP();
     }
 }

@@ -54,7 +54,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {   
-        //UpdateScore();
+        // Ensure UDP connection is started fresh
+        if (udpReceive != null)
+        {
+            udpReceive.StartUDP();
+        }
+
+        IsRoundActive = true;
+
         StartCoroutine(GameRound());
     }
 
@@ -132,7 +139,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void DetermineRoundWinner()
-    {   if(playerMove != "") {
+    {   
+        if(playerMove != "") {
             if (playerMove.Substring(1, playerMove.Length - 2) == aiMove)
             {
                 result = "Tie!";
@@ -172,6 +180,11 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
 
+        if (udpReceive != null)
+        {
+            udpReceive.CloseUDP();
+        }
+
         //resultText.text = playerLives > aiLives ? "You Win the Game!" : "AI Wins the Game!";
         string finalResult = playerLives > aiLives ? "You Win!" : "You Lost!";
         resultText.text = finalResult;
@@ -195,5 +208,14 @@ public class GameManager : MonoBehaviour
         enemyHealth1.gameObject.SetActive(aiLives >= 1);
         enemyHealth2.gameObject.SetActive(aiLives >= 2);
         enemyHealth3.gameObject.SetActive(aiLives >= 3);
+    }
+
+        void OnDisable()
+    {
+        // Clean up UDP connection when scene changes
+        if (udpReceive != null)
+        {
+            udpReceive.CloseUDP();
+        }
     }
 }
