@@ -47,7 +47,7 @@ public class HandAnimationController : MonoBehaviour
         // Reset previous triggers
         animator.ResetTrigger("Rock");
         animator.ResetTrigger("Paper");
-        animator.ResetTrigger("Scissor");
+        animator.ResetTrigger("Scissors");
         
         // Set new trigger
         animator.SetTrigger(gesture);

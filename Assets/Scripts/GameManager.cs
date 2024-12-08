@@ -17,12 +17,14 @@ public class GameManager : MonoBehaviour
     private int currentCountdown = 5;
 
     // UI Elements
-    public Text countdownText;
-    public Text resultText;
-    public Text scoreText;
-    public Text currentGestureText;
-    public Text livesCountdownText; // Add new UI text element
+    public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI resultText;
+    //public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI currentGestureText;
+    // public TextMeshProUGUI livesCountdownText; // Add new UI text element
     [SerializeField] private TextMeshProUGUI playerGestureText; // Add this field
+
+    public TextMeshProUGUI enemyGestureText; // Add this field
 
     // Health UI Images
     [Header("Player Health UI")]
@@ -47,9 +49,11 @@ public class GameManager : MonoBehaviour
     // Reference to UDPReceive
     public UDPReceive udpReceive;
 
+    [SerializeField] private HandAnimationController aiHandAnimation;
+
     void Start()
     {
-        UpdateScore();
+        //UpdateScore();
         StartCoroutine(GameRound());
     }
 
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour
             // Update currentGestureText if it exists (for backward compatibility)
             if (currentGestureText != null)
             {
-                currentGestureText.text = $"Current Gesture: {gesture}";
+                currentGestureText.text = $"{gesture}".Substring(1, gesture.Length - 2);
             }
         }
     }
@@ -78,18 +82,18 @@ public class GameManager : MonoBehaviour
         for (currentCountdown = 5; currentCountdown >= 1; currentCountdown--)
         {
             countdownText.text = currentCountdown.ToString();
-            if (livesCountdownText != null)
-            {
-                livesCountdownText.text = $"Countdown: {currentCountdown}";
-            }
+            // if (livesCountdownText != null)
+            // {
+            //     livesCountdownText.text = $"Countdown: {currentCountdown}";
+            // }
             yield return new WaitForSeconds(1f);
         }
         
         countdownText.text = "GO!";
-        if (livesCountdownText != null)
-        {
-            livesCountdownText.text = "GO!";
-        }
+        // if (livesCountdownText != null)
+        // {
+        //     livesCountdownText.text = "GO!";
+        // }
         yield return new WaitForSeconds(1f);
         
         // Capture player's move from UDP
@@ -98,10 +102,16 @@ public class GameManager : MonoBehaviour
 
         // Get AI move
         aiMove = GetAIMove();
+        enemyGestureText.text = aiMove;
+
+        if(aiHandAnimation != null)
+        {
+            aiHandAnimation.SetGesture(aiMove);
+        }
 
         // Determine winner
         DetermineRoundWinner();
-        UpdateScore();
+        //UpdateScore();
 
         // Wait for spacebar
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
@@ -121,34 +131,36 @@ public class GameManager : MonoBehaviour
     }
 
     private void DetermineRoundWinner()
-    {
-        if (playerMove == aiMove)
-        {
-            result = "Tie!";
-            isTie = true;
+    {   if(playerMove != "") {
+            if (playerMove.Substring(1, playerMove.Length - 2) == aiMove)
+            {
+                result = "Tie!";
+                isTie = true;
+            }
+            else if ((playerMove.Substring(1, playerMove.Length - 2) == "Rock" && aiMove == "Scissors") ||
+                    (playerMove.Substring(1, playerMove.Length - 2) == "Paper" && aiMove == "Rock") ||
+                    (playerMove.Substring(1, playerMove.Length - 2) == "Scissors" && aiMove == "Paper"))
+            {
+                result = "You Win!";
+                aiLives--;
+                isTie = false;
+            }
+            else
+            {
+                result = "You Lose!";
+                playerLives--;
+                isTie = false;
+            }
         }
-        else if ((playerMove == "Rock" && aiMove == "Scissors") ||
-                 (playerMove == "Paper" && aiMove == "Rock") ||
-                 (playerMove == "Scissors" && aiMove == "Paper"))
-        {
-            result = "You Win!";
-            aiLives--;
-            isTie = false;
-        }
-        else
-        {
-            result = "You Lose!";
-            playerLives--;
-            isTie = false;
-        }
+
         resultText.text = result;
         UpdateHealthUI();  // Add this line
     }
 
-    private void UpdateScore()
-    {
-        scoreText.text = $"Player: {playerLives} | AI: {aiLives}";
-    }
+    // private void UpdateScore()
+    // {
+    //     scoreText.text = $"Player: {playerLives} | AI: {aiLives}";
+    // }
 
     private string GetAIMove()
     {
