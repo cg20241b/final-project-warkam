@@ -9,7 +9,7 @@ public class HUDController : MonoBehaviour
     void Update()
     {
         // Update the gesture text from UDP receiver
-        if (udpReceive != null && playerGestureText != null)
+        if (udpReceive != null && playerGestureText != null && udpReceive.currentGesture != "")
         {
             playerGestureText.text = $"{udpReceive.currentGesture.Substring(1, udpReceive.currentGesture.Length - 2)}";
         }
