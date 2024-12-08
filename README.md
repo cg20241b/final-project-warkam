@@ -117,7 +117,9 @@ Then on the pose mode, we add constraint to the fingers so it copy the movement 
 
 ### Hand Animation
 
-To create a moving hand movement changing from paper to scissor to rock to paper again, we used keyframe to mark what pose every "bone" should make.
+![Untitled video - Made with Clipchamp](https://github.com/user-attachments/assets/92221045-d65c-4338-b68f-b3657ebce142)
+
+To create a moving hand movement changing from paper to scissor to rock to paper again, we used keyframe to mark what pose every "bone" should make. To finished this processed, export the blender file into a .fbx file.
 
 ## User Interface (UI) Interaction
 
