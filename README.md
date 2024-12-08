@@ -95,13 +95,27 @@ Real-time lighting uses dynamic light sources that can move and change over time
 
 ## Animation
 
-### Character Animation
+### 3D Model
 
-Character animation is the process of creating and manipulating the movement of characters in films, video games, and other forms of media. It involves bringing characters to life by making them move, express emotions, and interact with their environment. This can include both 2D and 3D animation techniques, though the principles often overlap.
+![image](https://github.com/user-attachments/assets/aa623d52-a696-4665-af02-bbc8b71967e8)
 
-![image](https://github.com/user-attachments/assets/d2eaa33e-6e32-43f2-b26d-ae3f5c122e44)
+The 3D hand model was created using blender by applying skin and subdivision surface modifier to the starting cube. After that, we start shaping the cube into a hand shape. We added a smoothing finished to our hand, so it doesn't look rough.
 
-One of the key aspects for character animation is rigging. Rigging is the process of creating a skeletal structure for a character. This skeleton consists of bones and joints that define how the character moves. The character model is then bound to this skeleton, allowing animators to manipulate the rig to create movement.
+![image](https://github.com/user-attachments/assets/9e66be9a-1246-4a67-a67e-f2b8bb120b1c)
+
+After the hand is done, we can apply the shading so the mesh has color and texture.
+
+### Rigging
+
+![image](https://github.com/user-attachments/assets/714f24af-59ec-418c-b724-0a6faa962da4)
+
+Afrer the model were finished, we continue into the rigging process. By using multiple connected singular "bone" we can create a skeleton-like rig.
+
+![image](https://github.com/user-attachments/assets/d653b70b-c5a3-415f-8a33-22956ccfe35e)
+
+Then on the pose mode, we add constraint to the fingers so it copy the movement of the parent "bone" so it moves the child "bone" by copying the parent rotation.
+
+
 
 ## User Interface (UI) Interaction
 
