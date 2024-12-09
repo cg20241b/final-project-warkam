@@ -16,19 +16,16 @@ public class EndMenuController : MonoBehaviour
 
     public void RetryGame()
     {
-        // Load the game scene - replace "GameScene" with your actual game scene name
         SceneManager.LoadScene("GameScene"); 
     }
 
     public void GoToMainMenu()
     {
-        // Quit the game
         SceneManager.LoadScene("MainMenu");
     }
 
         public void QuitGame()
     {
-        // Quit the game
         Application.Quit();
     }
 }

@@ -18,13 +18,11 @@ public class MainMenuController : MonoBehaviour
 
     public void PlayGame()
     {
-        // Load the game scene - replace "GameScene" with your actual game scene name
         SceneManager.LoadScene("GameScene"); 
     }
 
     public void QuitGame()
     {
-        // Quit the game
         Application.Quit();
     }
 }
